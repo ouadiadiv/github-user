@@ -1,0 +1,16 @@
+<link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
+
+<span class="glyphicon" 
+[ngClass]="{
+    'glyphicon-star' : trueee ,
+    'glyphicon-star-empty' : !trueee
+}"
+[ngStyle]="{
+    'color' : trueee ? 'red' :  'blue' ,
+    'font-size' : trueee ? '20 px' :  '100 px' 
+    
+}"
+(click)="change()"
+></span>
+
+

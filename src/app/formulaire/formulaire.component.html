@@ -1,0 +1,62 @@
+<form  #f="ngForm" (ngSubmit)="log2(f)">
+    <div ngModelGroup="contact">
+    <div class="form-group">
+        <label for="firstName"> firstName</label>
+        <input required  minlength="4" pattern="[a-zA-Z]+" ngModel name="firstName " #firstName="ngModel" (change)="log(firstName)" class="form-control" type="text" id="firstName">
+          <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid"> 
+            <div *ngIf="firstName.errors?.['required'] " > erreur 1</div>
+            <div *ngIf="firstName.errors?.['minlength'] " > erreur 2</div>
+            <div *ngIf="firstName.errors?.['pattern'] " > erreur 3</div>
+            
+          </div>
+    </div>
+    <div class="form-group">
+        <label for="secondName"> secondName</label>
+        <input required  minlength="4" pattern="[a-zA-Z]+" ngModel name="secondName " #secondName="ngModel" class="form-control" type="text" id="secondName">
+        <div class="alert alert-danger" *ngIf="secondName.touched && !secondName.valid"> 
+            <div *ngIf="secondName.errors?.['required'] " > erreur 1</div>
+            <div *ngIf="secondName.errors?.['minlength'] " > erreur 2</div>
+            <div *ngIf="secondName.errors?.['pattern'] " > erreur 3</div>
+            
+          </div>
+
+    </div>
+</div>
+    
+    <div class="form-group">
+        <label for="commentaire">commentaire</label>
+        <textarea class="form-control"  type="text" id="commentaire"></textarea>
+
+    </div>
+    
+    <div class="form-group">
+        <label for="List">List</label>
+            <select multiple="multiple" id="List" ngModel name="List">
+                <option value=""></option>
+                <option *ngFor="let variable of listes" [ngValue]="variable">{{variable.nom}}</option>
+            </select>
+        
+
+        
+    </div> 
+   
+    <div class="radio" *ngFor="let choix of listes">
+            <label for="radio">
+                <input type="radio" ngModel name="radio" [value]="choix.id"> {{choix.nom}}
+            </label>
+    </div>
+    
+    <div class="checkbox">
+        <label> 
+            <input type="checkbox" ngModel name="checkbox">s'abonner
+        </label>
+   
+
+    </div>
+ 
+
+    <div class="form-group">
+    <button class="btn btn-primary" [disabled]="!f.valid"> enregistrer</button>
+     </div>
+</form>
+<p> {{f.value | json}}</p>

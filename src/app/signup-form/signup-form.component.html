@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+   
+    <div class="form-group">
+        <label for="nom"> firstName</label>
+        <input  formControlName="userNme"   class="form-control" type="text" id="nom">
+           <div class="alert alert-warning" *ngIf="userName?.touched && userName?.invalid">
+            <div *ngIf="userName?.errors?.['required']"> 
+                <p class="alert-content"><strong>Attention ! </strong> Votre porte-documents atteindra bientôt la limite autorisée.</p></div>
+             <div></div>
+             <div *ngIf="userName?.errors?.['minlength']"> 
+                <p class="alert-content"><strong>mama ! </strong> Votre porte-documents atteindra bientôt la limite autorisée.</p></div>
+                <div *ngIf="userName?.errors?.['cannotUseEspace']"> 
+                    <p class="alert-content"><strong>hi ! </strong> Votre porte-documents atteindra bientôt la limite autorisée.</p></div>
+                <div></div>
+            
+            
+     </div>
+  
+    <div class="form-group">
+        <label for="secondName"> secondName</label>
+        <input  formControlName="password"   class="form-control" type="text" id="secondName">
+        <div class="alert alert-warning" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+            <p class="alert-content"><strong>mamak ! </strong> Votre porte-documents atteindra bientôt la limite autorisée.</p>
+           </div>
+       
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" > enregistrer</button>
+    </div>

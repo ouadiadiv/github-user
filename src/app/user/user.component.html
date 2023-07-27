@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>data</h2>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>title</th>
+    <th>body</th>
+  </tr>
+ 
+  <tr *ngFor="let user of listeUsers">
+    <td>{{user.id}}</td>
+    <td [routerLink]="['/user' , user.id , user.email]"
+    [queryParams]="{page : 1 ,site :user.website , var :'val'}">{{user.email}}</td>
+    <td>{{user.phone}}</td>
+    <td> <div align="right">
+        <button class="btn btn-primary" (click)="edit(user)">edit</button>
+       
+    </div>  <tr><button class="btn btn-danger" (click)=" deletegetUser(user)">suprimer</button></tr></td>
+    <td>
+        
+   
+    </td>
+  </tr>
+  
+ 
+</table>
+
+</body>
+</html>
+<form>
+  
+    <div class="form-group">
+        <label for="id"> id</label>
+        <textarea   [(ngModel)]="user.phone" name="id " class="form-control" type="text" id="id"></textarea>
+        
+    </div>
+   
+    <div class="form-group">
+        <label for="titre"> titre</label>
+        <input   [(ngModel)]="user.email" name="titre" class="form-control" type="text" id="titre">
+     
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary"  (click)="addGetUSer()" *ngIf="status"> enregistrer</button>
+         </div>
+     <div class="form-group">
+            <button class="btn btn-danger" (click)="updateGetUSer()"  *ngIf="!status"> update</button>
+    </div>
+        
+    
+</form>

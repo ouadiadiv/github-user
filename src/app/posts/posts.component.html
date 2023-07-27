@@ -1,0 +1,70 @@
+<form>
+    <div class="form-group">
+        <label for="titre"> titre</label>
+        <input required  [(ngModel)]="post.title" name="titre " class="form-control" type="text" id="titre">
+     
+    </div>
+    <div class="form-group">
+        <label for="id"> body</label>
+        <textarea required  [(ngModel)]="post.body" name="firstName " class="form-control" type="text" id="id"></textarea>
+         
+    </div>
+   
+    
+    <div class="form-group">
+        <button class="btn btn-primary"  (click)="ajouter()" *ngIf="status" > enregistrer</button>
+        <button class="btn btn-danger"  (click)="update()" *ngIf="!status"> enregistrer</button>
+         </div>
+    </form>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>data</h2>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>titre</th>
+    <th>body</th>
+  </tr>
+ 
+  <tr *ngFor="let post of posts">
+    <td>{{post.id}}</td>
+    <td>{{post.title}}</td>
+    <td>{{post.body}}</td>
+    <div align="right">
+        <button class="btn btn-primary" (click)="edit(post)">edit</button>
+        <button class="btn btn-danger" (click)="delete(post)">suprimer</button>
+
+
+    </div>
+  </tr>
+ 
+</table>
+
+</body>
+</html>
+
